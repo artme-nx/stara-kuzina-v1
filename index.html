@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Konoba Stara Kuzina — Nin | Iz stare kuzine, s ognjišta</title>
+<meta name="description" content="Konoba Stara Kuzina u Ninu — domaća dalmatinska kuhinja iz stare kuzine: ninski šokol, peka, brodet, domaći kruh i pašta. Rezervirajte stol uz toplinu ognjišta i stare recepte.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pergament:#F4EEDF;
+  --pergament-2:#EEE5D0;
+  --terracotta:#B5532E;
+  --copper:#A8632E;
+  --copper-soft:#C07C44;
+  --olive:#6E6B45;
+  --charcoal:#2A2420;
+  --charcoal-soft:#4A4038;
+  --line:#D8CCB0;
+  --cream:#FBF7EC;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:auto}
+body{
+  background:var(--pergament);
+  color:var(--charcoal);
+  font-family:'DM Sans',sans-serif;
+  font-weight:300;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+/* subtle grain */
+body::before{
+  content:"";
+  position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;
+}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.15}
+.italic{font-style:italic;font-weight:400}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.eyebrow{font-family:'DM Sans',sans-serif;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--copper);font-weight:500}
+
+/* HEADER */
+header{position:fixed;top:0;left:0;right:0;z-index:50;transition:all .5s ease;
+  padding:22px 0;background:transparent;}
+header.scrolled{background:rgba(244,238,223,.92);backdrop-filter:blur(10px);padding:14px 0;border-bottom:1px solid var(--line);}
+.nav{display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'Cormorant Garamond',serif;font-size:1.45rem;letter-spacing:.04em;color:var(--cream);transition:color .5s}
+header.scrolled .brand{color:var(--charcoal)}
+.brand span{font-style:italic;color:var(--copper-soft)}
+header.scrolled .brand span{color:var(--copper)}
+.nav-links{display:flex;gap:34px;align-items:center}
+.nav-links a{font-size:.82rem;letter-spacing:.06em;color:var(--cream);opacity:.9;transition:opacity .3s,color .5s}
+header.scrolled .nav-links a{color:var(--charcoal-soft)}
+.nav-links a:hover{opacity:1;color:var(--copper-soft)}
+.btn-res{background:var(--copper);color:var(--cream)!important;padding:11px 22px;border-radius:2px;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;transition:background .3s,transform .3s;opacity:1!important}
+.btn-res:hover{background:var(--terracotta);transform:translateY(-2px)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.burger span{width:26px;height:2px;background:var(--cream);transition:.3s}
+header.scrolled .burger span{background:var(--charcoal)}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) brightness(.82)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,36,32,.55) 0%,rgba(42,36,32,.15) 40%,rgba(42,36,32,.8) 100%)}
+.hero-inner{position:relative;z-index:3;padding-bottom:9vh;color:var(--cream)}
+.hero .eyebrow{color:#E8B98A}
+.hero h1{font-size:clamp(2.8rem,7.5vw,6.2rem);font-weight:500;margin:18px 0 8px;letter-spacing:.01em}
+.hero .tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:clamp(1.3rem,3vw,2.1rem);color:#F0E2CC;max-width:620px;line-height:1.35}
+.hero-meta{display:flex;gap:28px;margin-top:34px;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;opacity:.85;flex-wrap:wrap}
+.hero-meta span{display:flex;align-items:center;gap:9px}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--copper-soft)}
+.scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:3;color:var(--cream);font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;opacity:.6;writing-mode:vertical-rl}
+
+/* dividers */
+.divider{display:flex;align-items:center;justify-content:center;gap:22px;padding:14px 0;color:var(--copper);opacity:.7}
+.divider svg{flex:0 0 auto}
+.divider .ln{height:1px;width:90px;background:var(--line)}
+
+/* SECTION base */
+section{position:relative;z-index:2}
+.pad{padding:120px 0}
+.center{text-align:center}
+.sec-head{max-width:720px;margin:0 auto 64px}
+.center .sec-head{margin-left:auto;margin-right:auto}
+.sec-head h2{font-size:clamp(2.2rem,4.5vw,3.4rem);margin:16px 0 18px}
+.sec-head p{color:var(--charcoal-soft);font-size:1.02rem}
+.reveal{opacity:0;transform:translateY(34px)}
+
+/* MANIFEST */
+.manifest{background:var(--pergament-2)}
+.manifest .wrap{max-width:880px}
+.manifest p{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2.15rem);line-height:1.5;font-weight:400;color:var(--charcoal);text-align:center}
+.manifest .lead-in{font-style:italic;color:var(--copper)}
+.manifest .small{font-family:'DM Sans',sans-serif;font-size:.95rem;color:var(--charcoal-soft);text-align:center;margin-top:34px;line-height:1.8}
+
+/* STORY */
+.story-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:74px;align-items:center}
+.story-img{position:relative}
+.story-img img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:sepia(.28) saturate(.95) brightness(.96);border-radius:2px}
+.story-img .frame{position:absolute;inset:14px;border:1px solid rgba(251,247,236,.5);pointer-events:none}
+.story-text h2{font-size:clamp(2rem,4vw,3rem);margin:14px 0 22px}
+.story-text p{margin-bottom:20px;color:var(--charcoal-soft);font-size:1.04rem}
+.story-text .signature{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.5rem;color:var(--copper);margin-top:8px}
+
+/* MENU */
+.menu{background:var(--pergament-2)}
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 70px;max-width:980px;margin:0 auto}
+.dish{padding:26px 0;border-bottom:1px solid var(--line)}
+.dish .top{display:flex;align-items:baseline;gap:14px}
+.dish h3{font-size:1.6rem;font-weight:500;color:var(--charcoal)}
+.dish .lead{flex:1;height:1px;border-bottom:1px dotted var(--copper-soft);opacity:.5;margin-bottom:6px}
+.dish .tag{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--copper);white-space:nowrap}
+.dish p{margin-top:8px;color:var(--charcoal-soft);font-size:.96rem}
+.dish .micro{display:block;margin-top:7px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.02rem;color:var(--olive);opacity:0;transform:translateY(6px);transition:.4s}
+.dish:hover .micro{opacity:1;transform:translateY(0)}
+.menu-note{text-align:center;margin-top:54px;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--charcoal-soft)}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;grid-auto-rows:200px}
+.gallery-grid figure{overflow:hidden;border-radius:2px;position:relative}
+.gallery-grid img{width:100%;height:100%;object-fit:cover;filter:sepia(.4) saturate(.9) brightness(.94);transition:transform .9s ease,filter .9s ease}
+.gallery-grid figure:hover img{transform:scale(1.06);filter:sepia(.15) saturate(1.02) brightness(1)}
+.g1{grid-column:span 5;grid-row:span 2}
+.g2{grid-column:span 4}
+.g3{grid-column:span 3}
+.g4{grid-column:span 3}
+.g5{grid-column:span 4}
+.gcap{position:absolute;left:0;bottom:0;right:0;padding:14px 16px;color:var(--cream);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;background:linear-gradient(0deg,rgba(42,36,32,.7),transparent);opacity:0;transition:.4s}
+.gallery-grid figure:hover .gcap{opacity:1}
+
+/* VISIT */
+.visit{background:var(--charcoal);color:var(--cream)}
+.visit .eyebrow{color:var(--copper-soft)}
+.visit h2{color:var(--cream)}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:stretch}
+.visit-info h2{font-size:clamp(2rem,4vw,3rem);margin:14px 0 30px}
+.info-row{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid rgba(251,247,236,.14)}
+.info-row .ic{flex:0 0 24px;color:var(--copper-soft);margin-top:3px}
+.info-row h4{font-family:'DM Sans',sans-serif;font-weight:500;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--copper-soft);margin-bottom:6px}
+.info-row p{color:#E8DFCE;font-size:1rem;line-height:1.6}
+.info-row a:hover{color:var(--copper-soft)}
+.hours-list{list-style:none}
+.hours-list li{display:flex;justify-content:space-between;padding:8px 0;font-size:.96rem;color:#E8DFCE;border-bottom:1px dashed rgba(251,247,236,.1)}
+.map-wrap{border-radius:2px;overflow:hidden;min-height:430px;border:1px solid rgba(251,247,236,.16)}
+.map-wrap iframe{width:100%;height:100%;min-height:430px;border:0;filter:sepia(.2) saturate(.9)}
+.visit .btn-res{display:inline-block;margin-top:30px}
+
+/* CTA strip */
+.cta{background:var(--copper);color:var(--cream);text-align:center}
+.cta h2{font-size:clamp(2.2rem,5vw,3.6rem);color:var(--cream)}
+.cta p{max-width:540px;margin:18px auto 32px;opacity:.92}
+.cta .btn-line{display:inline-flex;gap:20px;flex-wrap:wrap;justify-content:center}
+.btn-ghost{border:1px solid rgba(251,247,236,.55);color:var(--cream);padding:14px 30px;border-radius:2px;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;transition:.3s}
+.btn-ghost:hover{background:var(--cream);color:var(--copper)}
+.btn-solid{background:var(--cream);color:var(--copper);padding:14px 30px;border-radius:2px;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;transition:.3s}
+.btn-solid:hover{background:var(--charcoal);color:var(--cream)}
+
+/* FOOTER */
+footer{background:var(--charcoal);color:#C8BBA6;padding:70px 0 36px;border-top:1px solid rgba(251,247,236,.1)}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.foot-brand{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--cream)}
+.foot-brand span{font-style:italic;color:var(--copper-soft)}
+.foot-brand p{font-family:'DM Sans';font-size:.92rem;margin-top:14px;max-width:280px;line-height:1.7}
+footer h4{font-family:'DM Sans';font-weight:500;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--copper-soft);margin-bottom:16px}
+footer ul{list-style:none}
+footer li{margin-bottom:10px;font-size:.94rem}
+footer a:hover{color:var(--cream)}
+.foot-bottom{border-top:1px solid rgba(251,247,236,.1);padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:.8rem;opacity:.7}
+
+@media(max-width:880px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .story-grid,.visit-grid,.menu-grid,.foot-grid{grid-template-columns:1fr;gap:40px}
+  .pad{padding:80px 0}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}
+  .g1,.g2,.g3,.g4,.g5{grid-column:span 1;grid-row:span 1}
+  .g1{grid-column:span 2;grid-row:span 2}
+  .menu-grid{gap:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1!important;transform:none!important}
+  *{scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="wrap nav">
+    <a href="#" class="brand">Stara <span>Kuzina</span></a>
+    <nav class="nav-links">
+      <a href="#prica">Naša priča</a>
+      <a href="#jelovnik">Jelovnik</a>
+      <a href="#galerija">Galerija</a>
+      <a href="#posjet">Posjet</a>
+      <a href="#posjet" class="btn-res">Rezerviraj stol</a>
+    </nav>
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=2000&q=80" alt="Topla stara kuzina uz ognjište">
+  </div>
+  <div class="wrap hero-inner">
+    <p class="eyebrow">Nin &middot; Dalmacija &middot; Domaća kuhinja</p>
+    <h1>Konoba Stara Kuzina</h1>
+    <p class="tagline">Iz stare kuzine, gdje uvijek gori ognjište — stari recepti, domaći kruh i okusi koji se pamte generacijama.</p>
+    <div class="hero-meta">
+      <span><span class="dot"></span>Ninski šokol</span>
+      <span><span class="dot"></span>Peka ispod čripnje</span>
+      <span><span class="dot"></span>Brodet &amp; domaća pašta</span>
+    </div>
+  </div>
+  <div class="scroll-hint">Uđite</div>
+</section>
+
+<!-- MANIFEST -->
+<section class="manifest pad">
+  <div class="wrap">
+    <div class="divider reveal">
+      <span class="ln"></span>
+      <svg width="42" height="42" viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.3">
+        <path d="M8 34h26M11 34V20a10 10 0 0 1 20 0v14M21 10v-4M15 30h12"/>
+        <path d="M16 24c1.5-2 3.5-2 5-2s3.5 0 5 2" stroke-linecap="round"/>
+      </svg>
+      <span class="ln"></span>
+    </div>
+    <p class="reveal"><span class="lead-in">Kuzina</span> je u Dalmaciji oduvijek bila srce kuće — mjesto gdje gori vatra, gdje miriše svjež kruh i gdje se za stolom okuplja cijela obitelj. U našoj <em>staroj kuzini</em> ništa se nije promijenilo: ista drvena štednjak-peć, isti bakarni lonci, isti recepti zapisani u sjećanju, a ne na papiru.</p>
+    <p class="small reveal">Kuhamo polako, kao nekad. Tijesto mijesimo rukama, meso pečemo ispod čripnje, brodet krčkamo satima. Sve počinje na ognjištu — i sve se vraća k njemu.</p>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="pad" id="prica">
+  <div class="wrap story-grid">
+    <div class="story-img reveal">
+      <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=1100&q=80" alt="Bakarni lonci i stara kuhinja">
+      <span class="frame"></span>
+    </div>
+    <div class="story-text">
+      <p class="eyebrow reveal">Naša priča</p>
+      <h2 class="reveal">Generacije za istim ognjištem</h2>
+      <p class="reveal">Stara Kuzina rodila se iz jednostavne želje — da sačuvamo okuse koje su nas hranile dok smo odrastali. Recepte koje je bака pripremala na drvenom štednjaku, ručno mijesila kruh i u zoru palila vatru, danas pripremamo na isti način, za naš stol u Ninu.</p>
+      <p class="reveal">Nin nije slučajno mjesto za ovakvu konobu. Najstariji hrvatski kraljevski grad, sa svojim drevnim solanama, kamenim uličicama i romaničkom crkvom Svetog Križa, čuva istu vrstu strpljenja koju tražimo i u kuhinji — ono što je staro, dobro je čuvati.</p>
+      <p class="reveal">Ovdje se ne žuri. Sjednete, natočimo vam domaće vino, a iz kuzine krene miris koji vas vraća kući — bez obzira odakle dolazite.</p>
+      <p class="signature reveal">— obitelj Stara Kuzina, Nin</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="divider reveal">
+  <span class="ln"></span>
+  <svg width="56" height="22" viewBox="0 0 56 22" fill="none" stroke="currentColor" stroke-width="1.2">
+    <path d="M28 2v18M28 6c-3-3-7-3-9 0M28 6c3-3 7-3 9 0M28 11c-3-3-7-3-9 0M28 11c3-3 7-3 9 0M28 16c-3-3-6-3-8 0M28 16c3-3 6-3 8 0"/>
+  </svg>
+  <span class="ln"></span>
+</div></div>
+
+<!-- MENU -->
+<section class="menu pad" id="jelovnik">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow reveal">Iz naše kuzine</p>
+      <h2 class="reveal">Jelovnik</h2>
+      <p class="reveal">Sezonska, domaća, dalmatinska jela — pripremljena onako kako su se uvijek pripremala. Bez prečaca, bez kompromisa.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="dish reveal">
+        <div class="top"><h3>Ninski šokol</h3><span class="lead"></span><span class="tag">Zaštitni znak</span></div>
+        <p>Sušeni svinjski vrat iz ninskog kraja, zaštićeni delicija — narezan tanko, poslužen s domaćim kruhom i maslinama.</p>
+        <span class="micro">miris dima i mora u svakom zalogaju</span>
+      </div>
+      <div class="dish reveal">
+        <div class="top"><h3>Peka ispod čripnje</h3><span class="lead"></span><span class="tag">Naručiti unaprijed</span></div>
+        <p>Janjetina ili teletina s krumpirom, polako pečena pod žeravicom — kruna svake dalmatinske kuzine.</p>
+        <span class="micro">žar koji tinja satima dok se ne stopi sve</span>
+      </div>
+      <div class="dish reveal">
+        <div class="top"><h3>Brodet</h3><span class="lead"></span><span class="tag">Tradicija</span></div>
+        <p>Gusti riblji gulaš od svježe jadranske ribe, krčkan na laganoj vatri, poslužen s palentom.</p>
+        <span class="micro">crveno more u zemljanoj posudi</span>
+      </div>
+      <div class="dish reveal">
+        <div class="top"><h3>Domaća pašta</h3><span class="lead"></span><span class="tag">Ručni rad</span></div>
+        <p>Šurlice i njoki mijesimo i režemo ručno, svaki dan — uz školjke, gulaš ili samo s maslinovim uljem.</p>
+        <span class="micro">tijesto pod prstima kao nekad</span>
+      </div>
+      <div class="dish reveal">
+        <div class="top"><h3>Domaći kruh</h3><span class="lead"></span><span class="tag">S ognjišta</span></div>
+        <p>Pšenični kruh pečen u krušnoj peći, hrskave kore i mekane sredine — temelj svakog našeg stola.</p>
+        <span class="micro">topao, raspukao, miriše na djetinjstvo</span>
+      </div>
+      <div class="dish reveal">
+        <div class="top"><h3>Pašticada</h3><span class="lead"></span><span class="tag">Spori kuhar</span></div>
+        <p>Mariniran goveđi but krčkan u domaćem vinu i prošeku, poslužen s njokima — strpljivo, kao nekad.</p>
+        <span class="micro">slatko-kiseli okus dugog popodneva</span>
+      </div>
+    </div>
+    <p class="menu-note reveal">Jelovnik se mijenja prema sezoni i ulovu. Za peku i veće skupine molimo najavu — kuhamo svježe, za vas.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="pad" id="galerija">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow reveal">Galerija</p>
+      <h2 class="reveal">Topline koje se vide</h2>
+    </div>
+    <div class="gallery-grid">
+      <figure class="g1 reveal"><img src="https://images.unsplash.com/photo-1514516345957-556ca7d90a29?auto=format&fit=crop&w=1100&q=80" alt="Vatra na ognjištu"><figcaption class="gcap">Ognjište koje nikad ne gasimo</figcaption></figure>
+      <figure class="g2 reveal"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80" alt="Domaći kruh"><figcaption class="gcap">Kruh iz krušne peći</figcaption></figure>
+      <figure class="g3 reveal"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80" alt="Brodet u zemljanoj posudi"><figcaption class="gcap">Brodet na laganoj vatri</figcaption></figure>
+      <figure class="g4 reveal"><img src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=800&q=80" alt="Bakarni lonci i začini"><figcaption class="gcap">Bakar i začini</figcaption></figure>
+      <figure class="g5 reveal"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80" alt="Stol u konobi"><figcaption class="gcap">Stol koji čeka obitelj</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit pad" id="posjet">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:left;max-width:720px;margin-left:0">
+      <p class="eyebrow reveal">Posjet</p>
+      <h2 class="reveal">Dođite za naš stol</h2>
+      <p class="reveal" style="color:#C8BBA6">Konoba s 250 mjesta u srcu Nina — za obiteljski ručak, večeru uz ognjište ili veliko slavlje. Rezervirajte svoj stol.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-info">
+        <div class="info-row reveal">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <div><h4>Adresa</h4><p>Nin, Zadarska županija<br>Hrvatska</p></div>
+        </div>
+        <div class="info-row reveal">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 5c0 8 7 15 15 15l1.5-3.5-4.5-2-2 2c-2.5-1.2-4.8-3.5-6-6l2-2-2-4.5L4 5Z"/></svg></div>
+          <div><h4>Rezervacije &amp; najava peke</h4><p><a href="tel:+38523264099">+385 23 264 099</a></p></div>
+        </div>
+        <div class="info-row reveal">
+          <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></div>
+          <div><h4>Radno vrijeme</h4>
+            <ul class="hours-list" style="margin-top:6px">
+              <li><span>Ponedjeljak – Petak</span><span>11:00 – 23:00</span></li>
+              <li><span>Subota – Nedjelja</span><span>11:00 – 24:00</span></li>
+              <li><span>Kuhinja</span><span>do 22:30</span></li>
+            </ul>
+          </div>
+        </div>
+        <a href="tel:+38523264099" class="btn-res">Rezerviraj stol</a>
+      </div>
+      <div class="map-wrap reveal">
+        <iframe src="https://maps.google.com/maps?q=Konoba+Stara+Kuzina+Nin&output=embed" loading="lazy" title="Karta — Konoba Stara Kuzina, Nin"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta pad">
+  <div class="wrap">
+    <h2 class="reveal">Stol je topao, ognjište gori</h2>
+    <p class="reveal">Najavite svoj dolazak i dopustite da vas dočekamo onako kako se gosti dočekuju u staroj kuzini — kruhom, vinom i toplinom.</p>
+    <div class="btn-line reveal">
+      <a href="tel:+38523264099" class="btn-solid">Nazovi +385 23 264 099</a>
+      <a href="#jelovnik" class="btn-ghost">Pogledaj jelovnik</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">Stara <span>Kuzina</span>
+        <p>Domaća dalmatinska kuhinja iz stare kuzine. Stari recepti, ognjište koje gori i okusi Nina — za vašim stolom.</p>
+      </div>
+      <div>
+        <h4>Stranica</h4>
+        <ul>
+          <li><a href="#prica">Naša priča</a></li>
+          <li><a href="#jelovnik">Jelovnik</a></li>
+          <li><a href="#galerija">Galerija</a></li>
+          <li><a href="#posjet">Posjet</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="tel:+38523264099">+385 23 264 099</a></li>
+          <li>Nin, Hrvatska</li>
+          <li>Pon – Ned &middot; 11:00 – 23:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Konoba Stara Kuzina, Nin</span>
+      <span>Iz stare kuzine, s ognjišta &middot; Dalmacija</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script>
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Header scroll state
+const header = document.getElementById('header');
+const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 60);
+onScroll();
+
+// Mobile burger -> simple smooth scroll fallback (nav hidden on mobile, scroll to sections)
+document.getElementById('burger').addEventListener('click',()=>{
+  document.getElementById('posjet').scrollIntoView({behavior:'smooth'});
+});
+
+if(!reduceMotion){
+  // Lenis snappy
+  const lenis = new Lenis({lerp:0.2, wheelMultiplier:1, smoothWheel:true, syncTouch:false});
+  function raf(t){lenis.raf(t);requestAnimationFrame(raf);}
+  requestAnimationFrame(raf);
+  lenis.on('scroll',()=>{ScrollTrigger.update();onScroll();});
+
+  // anchor links via lenis
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id=a.getAttribute('href');
+      if(id.length>1){e.preventDefault();const el=document.querySelector(id);if(el)lenis.scrollTo(el,{offset:-70});}
+    });
+  });
+
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.utils.toArray('.reveal').forEach(el=>{
+    gsap.to(el,{
+      opacity:1,y:0,duration:1.1,ease:'power2.out',
+      scrollTrigger:{trigger:el,start:'top 88%'}
+    });
+  });
+
+  // gentle hero parallax (light scrub, no pin)
+  gsap.to('.hero-bg img',{yPercent:12,ease:'none',
+    scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:0.6}});
+
+  // hero text intro
+  gsap.from('.hero-inner > *',{opacity:0,y:30,duration:1.2,stagger:0.14,ease:'power2.out',delay:0.2});
+} else {
+  window.addEventListener('scroll',onScroll,{passive:true});
+}
+</script>
+</body>
+</html>
